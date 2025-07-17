@@ -112,7 +112,6 @@
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -122,8 +121,61 @@
   }
 }
 
-
-html,body{
-  background-color: black;
-  color: white;
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-ExtraLight.woff");
+  font-weight: 200;
 }
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-Light.woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-Medium.woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-Regular.woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-SemiBold.woff");
+  font-weight: 700;
+}
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans_36pt-Bold.woff");
+  font-weight: 800;
+}
+@font-face {
+  font-family: sans;
+  src: url("/fonts/DMSans-Black.woff");
+  font-weight: 900;
+}
+
+* {
+  font-family: sans;
+}
+
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  height: 8px;           /* horizontal scrollbar height */
+  width: 8px;            /* vertical scrollbar width */
+}
+
+/* Scrollbar Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: #bcd5f105;
+  border-radius: 10px;
+}
+
+/* Scrollbar Track background */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+ 

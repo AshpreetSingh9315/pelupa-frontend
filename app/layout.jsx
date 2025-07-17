@@ -1,16 +1,25 @@
 // app/layout.jsx
-import './globals.css';
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import "./globals.css";
+import { Providers } from "./provider";
 
 export const metadata = {
-  title: 'Pelupa',
-  description: 'Premium products delivered to your door',
+  title: "Pelupa",
+  description: "Premium products delivered to your door",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        <main className="min-h-screen px-4 md:px-8 py-6">{children}</main>
+        <Providers>
+        <Cart />
+        <Header />
+           <main className="min-h-screen">{children}</main>
+        <Footer />
+        </Providers>
       </body>
     </html>
   );
