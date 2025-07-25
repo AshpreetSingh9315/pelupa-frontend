@@ -83,14 +83,13 @@ const ProductPage = () => {
     { label: "Country Of Origin", value: "China" },
   ];
 
+const renderStars = (count) =>
+  Array.from({ length: count }, (_, i) => (
+    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+  ));
+
   return (
     <div className="max-w-7xl mx-auto my-5 px-4">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-600 mb-6">
-        <span>Home</span> / <span>Audio</span> / <span>Wireless Earphones</span>{" "}
-        / <span className="text-gray-900">boAt Rockerz 235 Pro</span>
-      </nav>
-
       {/* Main Product Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {/* Product Images */}
@@ -128,32 +127,27 @@ const ProductPage = () => {
         {/* Product Details */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-black text-gray-900 mb-1">
               boAt Rockerz 235 Pro
             </h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-2 text-md  leading-5">
               Wireless Bluetooth Neckband with Up To 20 Hours Playback, BEAST™
               Mode, ENx™ Technology
             </p>
 
-            <div className="flex items-center space-x-4 mb-4">
+            <div className="flex items-center space-x-4 mb-8">
               <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-                <span className="ml-2 text-sm text-gray-600">(4.5/5)</span>
+                {renderStars(4)}
+                <span className="ml-2 text-sm text-gray-600">(4.5)</span>
               </div>
-              <span className="text-sm text-green-600">✓ In Stock</span>
+              <span className="text-sm text-green-600">In Stock</span>
             </div>
 
             <div className="mb-6">
-              <div className="flex items-center space-x-2 mb-2">
+              <div className="flex items-center space-x-2 ">
                 <span className="text-2xl font-bold text-gray-900">₹1,299</span>
-                <span className="text-lg text-gray-500 line-through">
-                  ₹2,990
+                <span className="text-sm text-gray-600 line-through">
+                  ₹2,990.00
                 </span>
                 <span className="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-medium">
                   57% OFF
@@ -163,7 +157,7 @@ const ProductPage = () => {
             </div>
 
             {/* Color Selection */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <h3 className="text-lg font-semibold mb-3">Color:</h3>
               <div className="flex space-x-3">
                 {colors.map((color) => (
@@ -180,7 +174,7 @@ const ProductPage = () => {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Quantity */}
             <div className="mb-6">
@@ -204,7 +198,7 @@ const ProductPage = () => {
 
             {/* Action Buttons */}
             <div className="flex space-x-4 mb-6">
-              <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+              <button type="button" className="flex-1 bg-[#5E62B5] cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:[#5E62B5] transition-colors flex items-center justify-center space-x-2">
                 <ShoppingCart className="w-5 h-5" />
                 <span>Add to Cart</span>
               </button>
@@ -224,12 +218,6 @@ const ProductPage = () => {
               <div className="flex items-center space-x-2 mb-2">
                 <Shield className="w-5 h-5 text-blue-600" />
                 <span className="text-sm">1 Year Warranty</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Award className="w-5 h-5 text-purple-600" />
-                <span className="text-sm">
-                  Earn up to 34 boAt reward points
-                </span>
               </div>
             </div>
           </div>
@@ -257,7 +245,7 @@ const ProductPage = () => {
 
       {/* Product Description */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl font-black text-gray-900 mb-6">
           Product Description
         </h2>
         <div className="prose max-w-none">
@@ -326,8 +314,8 @@ const ProductPage = () => {
 
       {/* Specifications */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          Specifications
+        <h2 className="text-3xl font-black text-gray-900 mb-6">
+          Technical Specifications
         </h2>
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div className="divide-y divide-gray-200">
@@ -346,7 +334,7 @@ const ProductPage = () => {
 
       {/* Additional Features */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl font-black text-gray-900 mb-6">
           Additional Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -392,7 +380,7 @@ const ProductPage = () => {
 
       {/* Reviews Section */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl font-black text-gray-900 mb-6">
           Customer Reviews
         </h2>
         <div className="bg-white rounded-lg border border-gray-200 p-6">

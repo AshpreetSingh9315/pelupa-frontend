@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import {AnimatePresence, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { openCart } from "@/store/reducers/cartSlice";
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
 
 const Cart = () => {
   const isActive = useSelector((state) => state.cart.isActive);
@@ -16,18 +16,29 @@ const Cart = () => {
 
   return (
     <>
-    
+    <AnimatePresence>
+      {isActive && (
+        <motion.div
+          key="cart-overlay"
+          initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+          animate={{ opacity: 1, backdropFilter: "blur(2px)" }}
+          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-[#7f7f7f]/60 z-30"
+        />
+      )}
+
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: isActive ? 0 : "100%" }}
         transition={{ type: "tween" }}
-        className="w-full sm:w-[400px] h-screen fixed right-0 top-0 z-40 bg-white shadow-xl flex flex-col"
+        className="w-[300px] lg:w-[400px] md:w-[400px] sm:w-[300px] h-full fixed right-0 top-0 z-40 bg-white shadow-xl flex flex-col"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b">
           <h2 className="text-lg font-semibold">Your Cart</h2>
           <button onClick={handleCart} className="text-xl font-bold">
-           <X />
+            <X />
           </button>
         </div>
 
@@ -67,6 +78,7 @@ const Cart = () => {
           </button>
         </div>
       </motion.div>
+      </AnimatePresence>
     </>
   );
 };

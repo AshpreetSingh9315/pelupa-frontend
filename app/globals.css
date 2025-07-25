@@ -113,6 +113,30 @@
 }
 
 @layer base {
+  :root {
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+
+  .dark {
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.439 0 0);
+  }
+}
+
+@layer base {
   * {
     @apply border-border outline-ring/50;
   }
@@ -169,7 +193,7 @@
 
 /* Scrollbar Thumb (the draggable part) */
 ::-webkit-scrollbar-thumb {
-  background-color: #bcd5f105;
+  background-color: #5a96da05;
   border-radius: 10px;
 }
 
@@ -178,4 +202,42 @@
   background-color: #f1f1f1;
 }
 
- 
+.effect_hover {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.effect_hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background: #354FAC;
+  transition: width 0.3s ease;
+}
+
+.bg-theme{
+  background-color: #354FAC;
+}
+
+.effect_hover:hover::after {
+  width: 50%;
+}
+
+.embla__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d1d5db; /* Tailwind's gray-300 */
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.embla__dot--selected {
+  background-color: #354FAC; /* Tailwind's gray-800 */
+}
+
