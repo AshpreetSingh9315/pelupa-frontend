@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "@/store/actions/categoryActions";
+import Link from "next/link";
 
 const Category = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const Category = () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
         {categories && categories.length > 0 ? (
           categories.map((category, index) => (
-            <div
+            <Link
+            href={`/categories/${category.id}`}
               key={index}
               className="group relative overflow-hidden rounded-xl shadow hover:shadow-lg transition-all h-35 cursor-pointer"
             >
@@ -36,7 +38,7 @@ const Category = () => {
               <div className="w-full text-black font-bold text-center py-2 text-sm absolute bottom-0 bg-white/80">
                 {category.name}
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p className="text-gray-500">Loading categories...</p>

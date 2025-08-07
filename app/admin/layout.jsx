@@ -7,10 +7,10 @@ export default async function Layout({ children}) {
       <body>
         <SidebarProvider>
           <AppSidebar />
-          <main>
+          <main className="w-full">
             <div className={"border-b border-zinc-300 flex items-center"} >
-              <SidebarTrigger/>
-               
+              <SidebarTrigger/>    
+              <span className="text-xs font-black">Dashboard</span>
             </div>
             {children}
           </main>

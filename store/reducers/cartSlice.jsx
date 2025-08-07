@@ -13,7 +13,15 @@ const cartSlice = createSlice({
       state.isActive = action.payload;
     },
     addToCart: (state, action) => {
-      state.cart.push(action.payload); // ✅ just add the new item
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemIndex !== -1) {
+        state.cart[itemIndex].quantity = action.payload.quantity;
+      } else {
+        state.cart.push({ ...action.payload });
+      }
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);

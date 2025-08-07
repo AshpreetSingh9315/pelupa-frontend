@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Star, Heart, ShoppingCart, ArrowBigRightDash } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { openCart, addToCart } from "@/store/reducers/cartSlice";
+import Link from "next/link";
 
 const CategoryCard = ({ product }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -120,7 +121,7 @@ export default function CategoryProduct() {
   const [sortBy, setSortBy] = useState("featured");
   const [products] = useState([
     {
-      id: 9,
+      id: 1,
       name: "boAt Rockerz 255 Pro+",
       image:
         "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=300&fit=crop",
@@ -161,13 +162,15 @@ export default function CategoryProduct() {
       {/* Filters and Sort */}
 
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex justify-between items-center mb-6">
-        </div>
+        <div className="flex justify-between items-center mb-6"></div>
 
         <div className="flex justify-between items-center mb-6">
           <div className="">
-          <h2 className="text-2xl font-black tracking-tight ">All Products</h2>
-            <span className="font-medium text-gray-600">{products.length}</span> products
+            <h2 className="text-2xl font-black tracking-tight ">
+              All Products
+            </h2>
+            <span className="font-medium text-gray-600">{products.length}</span>{" "}
+            products
           </div>
           <div className="flex items-center gap-2">
             <label className="text-sm text-gray-600">Sort by:</label>
@@ -188,7 +191,9 @@ export default function CategoryProduct() {
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {sortedProducts.map((product) => (
-            <CategoryCard key={product.id} product={product} />
+            <Link key={product.id} href={`/products/${product.id}`} passHref>
+              <CategoryCard key={product.id} product={product} />
+            </Link>
           ))}
         </div>
       </div>
