@@ -1,5 +1,5 @@
 import axios from "../../lib/api";
-import { loadData } from "../reducers/productsSlice";
+import { loadData, loadProduct } from "../reducers/productsSlice";
 
 export const getProducts = () => async (dispatch, getState) => {
   try {
@@ -11,3 +11,16 @@ export const getProducts = () => async (dispatch, getState) => {
     console.log("error :", error);
   }
 };
+
+
+
+export const getProductDetails = (id)=>async(dispatch, getState) => {
+  try {
+    const res = await axios.get(`/products/show/${id}`)
+    console.log(res.data);
+    await dispatch(loadProduct(res.data))
+  } catch (error) {
+      console.log(error)
+  }
+}
+

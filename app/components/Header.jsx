@@ -81,7 +81,7 @@ const Header = () => {
       {/* Top Offer Bar */}
       <div className="bg-[#E7EFF8] text-black text-xs text-center py-2">
         Get additional 5% off on Prepaid orders | Code:{" "}
-        <strong>BOATHEAD</strong> |{" "}
+        <strong>PELUPACAM</strong> |{" "}
         <span className="underline cursor-pointer">Shop Now</span>
       </div>
 
@@ -117,10 +117,7 @@ const Header = () => {
               Daily Deals
             </a>
             <a href="#" className="hover:text-black effect_hover">
-              Gift With boAt
-            </a>
-            <a href="#" className="hover:text-black effect_hover">
-              More
+              Products
             </a>
           </nav>
           {/* Dropdown (full-width) */}

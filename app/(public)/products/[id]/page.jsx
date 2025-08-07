@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Star,
   Heart,
@@ -16,11 +16,33 @@ import {
   Zap,
   Award,
 } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, openCart } from "@/store/reducers/cartSlice";
+import { useParams } from "next/navigation";
+import { getProductDetails } from "@/store/actions/productsActions";
 
 const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState("Black");
+  const isActive = useSelector((state) => state.cart.isActive);
+  const product = useSelector((state) => state.product.product);
+  const dispatch = useDispatch();
+
+const handleCart = (product) => {
+  const productWithQuantity = {
+    ...product,
+    quantity: quantity
+  };
+
+  dispatch(openCart(!isActive));
+  dispatch(addToCart(productWithQuantity));
+};
+
+
+  const param = useParams();
+  useEffect(() => {
+    dispatch(getProductDetails(param.id));
+  }, []);
 
   const productImages = [
     "https://www.boat-lifestyle.com/cdn/shop/products/main_2_53c3483e-38d0-4a88-a8e0-b75fe5b23584_600x.png?v=1685696997",
@@ -83,10 +105,10 @@ const ProductPage = () => {
     { label: "Country Of Origin", value: "China" },
   ];
 
-const renderStars = (count) =>
-  Array.from({ length: count }, (_, i) => (
-    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-  ));
+  const renderStars = (count) =>
+    Array.from({ length: count }, (_, i) => (
+      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+    ));
 
   return (
     <div className="max-w-7xl mx-auto my-5 px-4">
@@ -128,11 +150,10 @@ const renderStars = (count) =>
         <div className="space-y-6">
           <div>
             <h1 className="text-3xl font-black text-gray-900 mb-1">
-              boAt Rockerz 235 Pro
+              {product?.name}
             </h1>
             <p className="text-gray-600 mb-2 text-md  leading-5">
-              Wireless Bluetooth Neckband with Up To 20 Hours Playback, BEAST™
-              Mode, ENx™ Technology
+              {product?.description}
             </p>
 
             <div className="flex items-center space-x-4 mb-8">
@@ -140,14 +161,22 @@ const renderStars = (count) =>
                 {renderStars(4)}
                 <span className="ml-2 text-sm text-gray-600">(4.5)</span>
               </div>
-              <span className="text-sm text-green-600">In Stock</span>
+              <span className="text-sm">
+                {product?.stock > 0 ? (
+                  <span className=" text-green-600">In Stock</span>
+                ) : (
+                  <span className="text-red-500">Out Of Stock</span>
+                )}
+              </span>
             </div>
 
             <div className="mb-6">
               <div className="flex items-center space-x-2 ">
-                <span className="text-2xl font-bold text-gray-900">₹1,299</span>
+                <span className="text-2xl font-bold text-gray-900">
+                  ₹{product?.discounted_price}
+                </span>
                 <span className="text-sm text-gray-600 line-through">
-                  ₹2,990.00
+                  ₹{product?.price}
                 </span>
                 <span className="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-medium">
                   57% OFF
@@ -198,7 +227,11 @@ const renderStars = (count) =>
 
             {/* Action Buttons */}
             <div className="flex space-x-4 mb-6">
-              <button type="button" className="flex-1 bg-[#5E62B5] cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:[#5E62B5] transition-colors flex items-center justify-center space-x-2">
+              <button
+                onClick={() => handleCart(product)}
+                type="button"
+                className="flex-1 bg-[#5E62B5] cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:[#5E62B5] transition-colors flex items-center justify-center space-x-2"
+              >
                 <ShoppingCart className="w-5 h-5" />
                 <span>Add to Cart</span>
               </button>

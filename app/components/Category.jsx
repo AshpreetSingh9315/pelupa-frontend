@@ -7,6 +7,7 @@ import { getCategory } from "@/store/actions/categoryActions";
 const Category = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.data);
+  console.log(categories)
 
   useEffect(() => {
     dispatch(getCategory());
