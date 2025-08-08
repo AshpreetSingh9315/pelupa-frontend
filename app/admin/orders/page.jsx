@@ -27,7 +27,7 @@ const page = () => {
   return (
     <div>
       <Table>
-        <TableCaption>A list of recent orders.</TableCaption>
+        <TableCaption>{orders && orders.length>0 ? '' : "A list of recent orders."}</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Order ID</TableHead>
