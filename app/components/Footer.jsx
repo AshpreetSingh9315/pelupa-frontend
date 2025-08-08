@@ -138,8 +138,6 @@ const Footer = () => {
           <div className="flex flex-wrap gap-6 text-sm justify-between items-center">
             <a href="#" className="text-gray-500 hover:text-[#354FAC] transition-colors">Privacy Policy</a>
             <a href="#" className="text-gray-500 hover:text-[#354FAC] transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-500 hover:text-[#354FAC] transition-colors">Accessibility</a>
-            <a href="#" className="text-gray-500 hover:text-[#354FAC] transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

@@ -1,12 +1,16 @@
 import {
-  Calendar,
   Home,
   Inbox,
-  Search,
   Settings,
   User2,
+  ShoppingCart,
+  Tag,
+  Users,
+  Image,
+  BookText,
   ChevronUp,
 } from "lucide-react";
+
 import {
   Sidebar,
   SidebarContent,
@@ -30,27 +34,42 @@ const items = [
   {
     title: "Dashboard",
     url: "#",
-    icon: Home,
+    icon: Home, // Dashboard
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Orders",
+    url: "/orders",
+    icon: ShoppingCart, // Orders
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Category",
+    url: "/category",
+    icon: Tag, // Categories
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Products",
+    url: "/products",
+    icon: Inbox, // Products
+  },
+  {
+    title: "Users",
+    url: "/users",
+    icon: Users, // Users
+  },
+  {
+    title: "Banners",
+    url: "/banners",
+    icon: Image, // Banners/Media
+  },
+  {
+    title: "Blogs",
+    url: "/blogs",
+    icon: BookText, // Blogs/Articles
   },
   {
     title: "Settings",
     url: "#",
-    icon: Settings,
+    icon: Settings, // Settings
   },
 ];
 
@@ -61,11 +80,11 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Pelupa</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu >
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                <SidebarMenuItem key={item.title} >
+                  <SidebarMenuButton asChild >
+                    <a href={item.url} className={"py-6 text-lg"}>
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
