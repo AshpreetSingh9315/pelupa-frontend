@@ -105,13 +105,13 @@ const Cart = () => {
               <span>₹{subtotal.toFixed(2)}</span>
             </div>
 
-            <button className="w-full bg-black text-white py-2 rounded-lg text-sm hover:bg-gray-800 transition">
+            <button className="w-full bg-[#5D62B5] text-white py-2 rounded-lg text-sm hover:bg-[#25296e] transition-all">
               Proceed to Checkout
             </button>
 
             <button
               onClick={handleCart}
-              className="w-full text-black border border-black py-2 rounded-lg text-sm hover:bg-gray-100 transition"
+              className="w-full text-black border border-black py-2 rounded-lg text-sm hover:bg-gray-100 transition-all"
             >
               Continue Shopping
             </button>

@@ -127,7 +127,7 @@ const Header = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ type: "tween" }}
+              transition={{  duration: 0.3, ease: [0.25, 0.1, 0.25, 1]  }}
                 className="absolute left-0 top-full w-full bg-white shadow-xl py-6 px-10 block z-50"
               >
                 <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-end">
@@ -173,7 +173,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ type: "tween" }}
+              transition={{  duration: 0.3, ease: [0.25, 0.1, 0.25, 1]  }}
               className="absolute left-0 top-full w-full bg-white shadow-xl pb-8 px-10 block z-20"
             >
               <div className="w-full lg:w-4xl md:w-4xl sm:w-full px-5 mx-auto gap-5 justify-end flex border-2 items-center border-black rounded-sm relative bg-white">
